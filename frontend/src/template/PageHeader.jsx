@@ -1,11 +1,12 @@
 import React from 'react';
+import './PageHeader.css';
 import PropTypes from 'prop-types';
 
 const PageHeader = ({ name, small }) => {
     return(
-        <header className="page-header">
+        <div className='page_header'>
             <h2>{name} <small>{small}</small></h2>
-        </header>
+        </div>
     );
 }
 

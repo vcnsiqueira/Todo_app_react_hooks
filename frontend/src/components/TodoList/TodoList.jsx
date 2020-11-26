@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+//import PropTypes from 'prop-types';
 
 const TodoList = () => {
     return (
@@ -8,5 +8,9 @@ const TodoList = () => {
         </div>
     );
 };
+
+/*TodoList.propTypes = {
+
+};*/
 
 export default TodoList;

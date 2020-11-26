@@ -1,11 +1,11 @@
 import React from 'react'
-import { BrowserRouter, Switch, Route, Redirect, hashHistory } from 'react-router-dom';
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 
 import Todo from '../components/Todo/Todo';
 import About from '../components/About/About';
 
 
-export default () => {
+const Routes = () => {
     return(
         <BrowserRouter>
             <Switch>
@@ -16,4 +16,6 @@ export default () => {
         </BrowserRouter>
     );
 };
+
+export default Routes;
 

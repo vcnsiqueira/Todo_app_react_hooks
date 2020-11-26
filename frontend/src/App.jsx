@@ -9,7 +9,7 @@ const App = () => {
   return (
     <div>
       <Menu/>
-      <div className="container">
+      <div className='container-fluid'>
         <Routes />
       </div>
     </div> 
