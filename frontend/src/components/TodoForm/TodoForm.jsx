@@ -7,12 +7,12 @@ import IconButton from '../IconButton/IconButton';
 const TodoForm = ({ addElement, description, handleChange }) => {
 
     return(
-        <div class='d-flex'>
+        <div className='d-flex'>
             <Grid cols='12 9 10'>
                 <input className='form-control' placeholder='Adicione uma tarefa' value={description} onChange={handleChange}/>
             </Grid>
             <Grid cols='12 3 2'>
-                <IconButton style='primary' icon='plus' onClick={addElement}/>
+                <IconButton buttonStyle='primary' icon='plus' onClick={addElement}/>
             </Grid>
         </div>
     );

@@ -3,8 +3,8 @@ import React from 'react';
 const Menu = () => {
     return(
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a className="navbar-brand" href="#">
-                <i class="fas fa-th-list"></i> Todo App
+            <a className="navbar-brand" href="/">
+                <i className="fas fa-th-list"></i> Todo App
             </a>
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>

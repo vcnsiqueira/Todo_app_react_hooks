@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const IconButton = ({ style, icon, onClick, hide }) => {
+const IconButton = ({ buttonStyle, icon, onClick, hide }) => {
     
-    const buttonClass = `btn btn-${style}`;
+    const buttonClass = `btn btn-${buttonStyle}`;
     const iconClass = `fas fa-${icon}`
     
     if (hide) {
@@ -22,7 +22,7 @@ IconButton.defaultProps = {
 };
 
 IconButton.propTypes = {
-    style: PropTypes.string,
+    buttonStyle: PropTypes.string,
     icon: PropTypes.string,
     onClick: PropTypes.func,
     hide: PropTypes.bool,
