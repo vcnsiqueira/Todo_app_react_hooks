@@ -12,10 +12,11 @@ const Todo = () => {
     const [description, setDescription] = useState('');
     const [list, setList] = useState([]);
 
-    const refresh = () => {  // this method sets the description to a empty string and set the list of elements to the list (ordered decreasingly)
-        axios.get(`${URL}?sort=-createdAt`)
+    const refresh = (description = '') => {  // this method sets the description to a empty string and set the list of elements to the list (ordered decreasingly)
+        const search = description ? `&description__regex=/${description}/` : '';
+        axios.get(`${URL}?sort=-createdAt${search}`)
             .then(resp => {
-                setDescription('');
+                setDescription(description);
                 setList(resp.data);
                 console.log(resp.data);
             });
@@ -32,18 +33,48 @@ const Todo = () => {
     const handleAdd = () => { // this method adds a new element to the database and refreshs the list of elements
         axios.post(URL, { description })
             .then(resp => refresh());
-    }
+    };
 
     const handleRemove = (todo) => {
         axios.delete(`${URL}/${todo._id}`)
-            .then(resp => refresh());
+            .then(resp => refresh(description));
+    };
+
+    const handleTaskAsDone = (todo) => {
+        axios.put(`${URL}/${todo._id}`, { ...todo, done: true })
+            .then(resp => refresh(description));
+    };
+
+    const handleTaskAsPending = (todo) => {
+        axios.put(`${URL}/${todo._id}`, { ...todo, done: false })
+            .then(resp => refresh(description));
+    };
+
+    const handleSearch = (element) => {
+        refresh(description);
+    };
+
+    const handleClear = () => {
+        console.log('limpe')
+        refresh();
     };
 
     return(
         <div>
             <PageHeader name='Tarefas' small='Cadastro'/>
-            <TodoForm addElement={handleAdd} description={description} handleChange={handleChange}/>
-            <TodoList list={list} removeElement={handleRemove}/>
+            <TodoForm 
+                description={description}
+                addElement={handleAdd} 
+                handleChange={handleChange}
+                searchElement={handleSearch}
+                cleanForm={handleClear}
+            />
+            <TodoList 
+                list={list} 
+                removeElement={handleRemove}
+                doneTask={handleTaskAsDone}
+                pendingTask={handleTaskAsPending}
+            />
         </div>
     );
 };
